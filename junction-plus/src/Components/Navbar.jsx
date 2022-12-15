@@ -63,8 +63,9 @@ const Navbar = () => {
     //* RETURN AREA
 
     return (
-        <div>
-            <Box bg={useColorModeValue('black', 'white')} px={["5", "10", "12"]} border="2px solid blue" position="relative">
+        <>
+          
+            <Box bg={useColorModeValue('black', 'white')} px={["5", "10", "12"]}  position="relative" zIndex="100" w="100%">
                 <Flex h={12} alignItems={'center'} justifyContent={'space-between'}>
 
                     <IconButton
@@ -144,36 +145,38 @@ const Navbar = () => {
             </Collapse>
 
             {/* TODO:- Adding the Transition box for login / signin and account details option  */}
-            <Collapse in={loginToggle} animateOpacity >
+            <Collapse in={loginToggle} animateOpacity  >
                 <Box
                     // p='20px'
+                    zIndex="200"
                     color='white'
                     mt='2'
-                    bg='teal.500'
+                    bg='#404951'
                     rounded='md'
                     shadow='md'
                     position="absolute"
                     right={["5", "10", "12"]}
-                    opacity="0.6"
+                    opacity="0.7"
                     w="200px"
+                    
 
                 >
                     <VStack>
 
                         {state.isAuth ?
 
-                            <Button w="100%" rightIcon={<AiOutlineLogout />} colorScheme='blue' variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none" onClick={() => Logout_Toggle()}>
+                            <Button w="100%" rightIcon={<AiOutlineLogout />}  variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none" onClick={() => Logout_Toggle()}>
                                 Logout
                             </Button>
 
                             :
-                            <Button w="100%" rightIcon={<AiOutlineLogin />} colorScheme='blue' variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none" onClick={() => Login_Toggle()}>
+                            <Button w="100%" rightIcon={<AiOutlineLogin />}  variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none" onClick={() => Login_Toggle()}>
                                 Login
                             </Button>
                         }
 
                         <Link to="/account"  style={{width:"100%"}}>   
-                        <Button w="100%" rightIcon={<MdManageAccounts />} colorScheme='blue' variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none">
+                        <Button w="100%" rightIcon={<MdManageAccounts />}  variant='outline' display="flex" justifyContent="space-between" alignItems="center" border="none">
                             Account
                         </Button>
                         </Link>
@@ -183,7 +186,7 @@ const Navbar = () => {
 
             {Nav_State.login_logout_toggle_state ? <Login_Signup_Modal /> : null}
 
-        </div>
+        </>
     )
 }
 
