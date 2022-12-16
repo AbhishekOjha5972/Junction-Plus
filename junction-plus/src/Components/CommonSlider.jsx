@@ -38,7 +38,10 @@ console.log(popularMovieData)
                 id={ele.id}
                 adult={ele.adult}
                 title={ele.title}
+                title_name={ele.name}
                 release_date={ele.release_date}
+                first_air_date={ele.first_air_date}
+                vote_average={ele.vote_average}
                 />
                 })
             }

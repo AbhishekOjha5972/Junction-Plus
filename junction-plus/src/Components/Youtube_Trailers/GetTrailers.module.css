@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.ytMainContainer {
+    position: relative;
+    width: 100%;
+    border: 3px solid blue;
+    /* background-color: yellow; */
+
+
+}
+.ytMainContainer > div:nth-child(3){
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnailsContainer {
+    width: 100%;
+    border: 2px solid red;
+    display: flex;
+    overflow: hidden;
+    /* gap: 20px; */
+}
+
+.thumbnailsContainer>div {
+    min-width: 270px;
+    height: 150px;
+    border: 1px solid blue;
+    background-color: yellow;
+    font-size: 20px;
+    scroll-behavior: smooth;
+    margin: 10px;
+    overflow: hidden;
+    transition: .3s ease-in-out;
+}
+.thumbnailsContainer>div:hover {
+   transform: scale(1.05);
+}

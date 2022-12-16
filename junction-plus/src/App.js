@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Navbar from './Components/Navbar';
 import AllRoutes from './Routes/AllRoutes';
 import CommonSlider from './Components/CommonSlider';
+import GetTrailers from "./Components/Youtube_Trailers/GetTrailers";
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
     <div className="App" style={{backgroundColor:"#2d2d2d"}}>
     {/* <Navbar/> */}
       {/* <img src={`https://image.tmdb.org/t/p/w500/${apiData.backdrop_path}`} alt="adfsdf" /> */}
-      <AllRoutes/>
+      {/* <AllRoutes/> */}
+      <GetTrailers/>
     </div>
   );
 }
