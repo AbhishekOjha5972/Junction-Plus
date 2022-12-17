@@ -47,16 +47,8 @@ const GetTrailers = () => {
     }
 
     const handleMouseOver = (val) =>{
-        console.log("Tum meri madat nahi kar rahe ho")
-        console.log(val)
-        // boxBgImage.current.backgroundImage=val
+        boxBgImage.current.style.backgroundImage=`url(${val})`;
     }
-
-
-    
-
-
-
 
 console.log(ytData)
 
@@ -86,7 +78,8 @@ console.log(ytData)
 
                 <Container maxWidth="100%" px={["5", "10", "12"]}>
 
-                    {/* <div className={styles.thumbnailsContainer} ref={thumbnails}>
+                    <div className={styles.thumbnailsContainer} ref={thumbnails}>
+                    
                         <YtVideoCard onMouseOver={handleMouseOver}/>
                         <YtVideoCard onMouseOver={handleMouseOver}/>
                         <YtVideoCard onMouseOver={handleMouseOver}/>
@@ -98,7 +91,7 @@ console.log(ytData)
                         <YtVideoCard onMouseOver={handleMouseOver}/>
                         <YtVideoCard onMouseOver={handleMouseOver}/>
                         <YtVideoCard onMouseOver={handleMouseOver}/>
-                    </div> */}
+                    </div>
                 </Container>
 
                 <div>

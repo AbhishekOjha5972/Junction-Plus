@@ -8,7 +8,8 @@
     width: 100%;
     border: 3px solid blue;
     /* background-color: yellow; */
-
+    background-position:center;
+    background-size: cover;
 
 }
 .ytMainContainer > div:nth-child(3){

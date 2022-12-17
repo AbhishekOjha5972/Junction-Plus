@@ -87,13 +87,11 @@ const Home = () => {
     .then((res) => {
         console.log(res.data.results,"this is the current calling function")
         setTvShowsData(res.data.results)
-        console.log("hellow ")
       })
       .catch((err) => console.log(err))
 
   }
 
-  console.log(tvShowsData,"this is tv data")
 
   return (
     <div>
