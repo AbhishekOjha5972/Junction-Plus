@@ -134,17 +134,7 @@ const Home = () => {
         {/* TODO:- GETTING YOUTUBE TRAILERS OF TRENDING MOVIES  */}
 
         <Box position="relative">
-            <Container maxWidth="100%"  px={["5", "10", "12"]}>
-            <Tabs size='md' variant='enclosed' padding="20px 0">
-              <TabList >
-                <Text w={["100px", "150px", "fit-content"]} fontWeight="700" fontSize={["16px", "18px", "25px"]} color="rgb(234,234,234)" display="flex" justifyContent="left" alignItems="center" paddingRight={"10px"} >Latest Trailers</Text>
-                <Tab onClick={() => handleStateAndTypeOfTVShows("Popular")} color="rgb(234,234,234)">Popular TV Shows</Tab>
-                <Tab onClick={() => handleStateAndTypeOfTVShows("Top Rated")} color="rgb(234,234,234)" >Top Rated</Tab>
-                <Tab onClick={() => handleStateAndTypeOfTVShows("On The Air")} color="rgb(234,234,234)" >On the Air</Tab>
-                <Tab onClick={() => handleStateAndTypeOfTVShows("Airing Today")} color="rgb(234,234,234)" >Airing Today</Tab>
-              </TabList>
-            </Tabs>
-          </Container>
+           
           <GetTrailers/>
         </Box>
 

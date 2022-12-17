@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="App" style={{backgroundColor:"#2d2d2d"}}>
-      {/* <AllRoutes/> */}
-      <GetTrailers/>
+      <AllRoutes/>
+      {/* <GetTrailers/> */}
     </div>
   );
 }

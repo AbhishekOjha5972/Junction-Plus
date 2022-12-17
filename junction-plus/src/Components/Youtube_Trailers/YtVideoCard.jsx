@@ -1,18 +1,25 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import { Box } from '@chakra-ui/react'
+import styles from "./YtVideoCard.module.css";
+import { FaPlay } from "react-icons/fa"
 
-const YtVideoCard = ({onMouseOver}) => {
+const YtVideoCard = ({titleName,thumbnailImage,videoId, onMouseOver,playButoon }) => {
   return (
-    <div onMouseOver={()=>onMouseOver('https://is5-ssl.mzstatic.com/image/thumb/lgskq6n1xkUI5DOyA5tWWQ/1478x832.webp')}>
-     <Box>
-     <img src='https://is5-ssl.mzstatic.com/image/thumb/lgskq6n1xkUI5DOyA5tWWQ/1478x832.webp'/>
-     </Box>
-     <Box>
-      
-     </Box>
-     <p>title</p>
-     <p>title</p>
+    <Link>
+    <div onMouseOver={() => onMouseOver(thumbnailImage)} className={styles.cardContainer}>
+      <Box position="relative" onClick={()=>playButoon(videoId)}>
+        <img src={thumbnailImage}/>
+
+        <span>
+          <FaPlay />
+        </span>
+      </Box>
+      <Box>
+        <p>{titleName}</p>
+      </Box>
     </div>
+    </Link>
   )
 }
 export default YtVideoCard;
