@@ -6,7 +6,7 @@ import { FcViewDetails } from "react-icons/fc"
 import { BsListUl } from "react-icons/bs"
 import { Link } from 'react-router-dom'
 // title={ele.title} release_data={ele.data} rating={ele.vote_average} poster={ele.poster_path} language={ele.original_language} genre={genre_id} id={ele.id}
-const SearchCard = ({ title, release, rating, poster, language, genre, id, overView }) => {
+const SearchCard = ({ title, release, rating, poster, language, genre, id, overView,changeStateOfSearchModal }) => {
 
 
 
@@ -46,8 +46,8 @@ const SearchCard = ({ title, release, rating, poster, language, genre, id, overV
                             <Button variant='solid' colorScheme='blue' rightIcon={<BsListUl />}>
                                 Add to List
                             </Button>
-                            <Link to={`/details/${id}`}>
-                                <Button variant='solid' colorScheme='blue' rightIcon={<FcViewDetails />}>
+                            <Link onClick={()=>changeStateOfSearchModal} to={`/details/${id}`}>
+                                <Button variant='solid' colorScheme='blue' rightIcon={<FcViewDetails />} >
                                     More Details
                                 </Button>
                             </Link>

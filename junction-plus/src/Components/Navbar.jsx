@@ -103,6 +103,11 @@ const Navbar = () => {
         debounce(getSearchResult, 500)
     }
 
+    const changeStateOfSearchModal = () =>{
+        console.log("hello my dear all friends")
+        setSearchBoxToggle(false)
+    }
+
 
     //* RETURN AREA
     console.log(searchedMovieData)
@@ -122,10 +127,12 @@ const Navbar = () => {
                         color='blue'
 
                     />
+                    <Link to="/">
                     <Box h={12} display="flex" justifyContent={'center'} alignItems={'center'} >
                         <Image src="https://i.ibb.co/fvW8PGm/logo-6.png" h="35px" display={["none", "none", "block"]} />
                         <Image src="https://i.ibb.co/ts842G5/logo-7.png" h='35px' display={{ md: 'none' }} />
                     </Box>
+                    </Link>
                     <HStack >
                         <InputGroup display={["none", "none", "block"]}>
                             <InputLeftElement
@@ -252,13 +259,13 @@ const Navbar = () => {
                     </Center>
                 </Heading>
 
-                <Box  w="80%" m="auto" height={'100vh'} overflowY="scroll" >
+                <Box  w="100%" m="auto" height={'100vh'} overflowY="scroll" >
                     {
                         searchedMovieData.map((ele) => {
                             return <SearchCard key={ele.id} 
                             title={ele.title} release={ele.release_date} rating={ele.vote_average} 
                             poster={ele.poster_path} language={ele.original_language} genre={ele.genre_id}
-                            id={ele.id} overView={ele.overview} />
+                            id={ele.id} overView={ele.overview} changeStateOfSearchModal={changeStateOfSearchModal}/>
                         })
                     }
                 </Box>
