@@ -7,6 +7,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 import Navbar from '../Components/Navbar';
 import GetTrailers from '../Components/Youtube_Trailers/GetTrailers';
+import Footer from '../Components/Footer';
 
 const Home = () => {
 
@@ -93,6 +94,7 @@ const Home = () => {
   }
 
 
+
   return (
     <div>
 
@@ -137,7 +139,7 @@ const Home = () => {
            
           <GetTrailers/>
         </Box>
-
+        <Footer/>
       </Container>
 
 
