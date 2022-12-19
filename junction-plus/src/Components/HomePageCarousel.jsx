@@ -49,29 +49,6 @@ export default function HomePageCarousel() {
   console.log('apiData:', apiData)
 
 
-  const cards = [
-    {
-      title: 'Design Projects 1',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-    },
-    {
-      title: 'Design Projects 2',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
-    },
-    {
-      title: 'Design Projects 3',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-    },
-  ];
 
   //TODO:- MAKING REQUEST TO GET DATA FROM MOVIEDB DATABASE FOR TRENDING MOVIES 
 
@@ -81,6 +58,9 @@ export default function HomePageCarousel() {
       .then((res) => setApiData(res.results))
       .catch((err) => console.log(err))
   }, []);
+
+
+  console.log("api data in the home page carousel", apiData)
 
   console.log('apiData:', apiData)
   return (
@@ -129,7 +109,7 @@ export default function HomePageCarousel() {
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {apiData.map((card, index) => (
           <Box
-            key={index}
+            key={card.id}
             height={'6xl'}
             position="relative"
             backgroundPosition="center"
@@ -157,7 +137,7 @@ export default function HomePageCarousel() {
                 <Text fontSize={{ base: 'md', lg: 'lg' }} color="rgb(159,159,159)" fontWeight="700">
                   {`original language ${card.original_language}`}
                 </Text>
-                <Link to="/details">
+                <Link to={`details/${card.id}`}>
                   <Button fontWeight="700" width={'200px'}>{`Go to ${card.media_type}`}</Button>
                 </Link>
               </Stack>

@@ -5,6 +5,7 @@ import CommonSlider from './Components/CommonSlider';
 import GetTrailers from "./Components/Youtube_Trailers/GetTrailers";
 import Footer from "./Components/Footer";
 import Details from "./Pages/Details";
+import Reviews from "./Components/Reviews";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       {/* <GetTrailers/> */}
       {/* <Footer/> */}
       {/* <Details/> */}
+      {/* <Reviews/> */}
     </div>
   );
 }

@@ -1,8 +1,14 @@
 import { Button, CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import { Box, Container, Heading, Image, Text } from "@chakra-ui/react"
-import React, { useContext, useEffect, useRef, useState } from 'react'
 import { BsList, BsFillBookmarkFill, BsPlayFill } from "react-icons/bs"
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { MdOutlineFavorite, MdGraphicEq } from "react-icons/md"
+import { useParams } from 'react-router-dom'
+import axios from "axios"
+import CastSlider from '../Components/CastSlider'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
+import CommonSlider from "../Components/CommonSlider"
 import {
   Slider,
   SliderTrack,
@@ -10,6 +16,7 @@ import {
   SliderThumb,
   SliderMark,
 } from '@chakra-ui/react'
+
 import {
   Popover,
   PopoverTrigger,
@@ -21,26 +28,38 @@ import {
   PopoverCloseButton,
   PopoverAnchor,
 } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom'
-import axios from "axios"
-import CastSlider from '../Components/CastSlider'
-import Navbar from '../Components/Navbar'
-import Footer from '../Components/Footer'
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
+import Reviews from '../Components/Reviews'
+
 
 
 
 const Details = () => {
   const { id } = useParams();
   const [selectedMovieData, setSelectedMovieData] = useState({})
+  const [movieRecommendation, setMovieRecommendation] = useState([])
   const [arrayOfGenre, setArrayOfGenre] = useState([])
-  const [castData, setCastData] = useState([])
+  const [movieReview, setMovieReview] = useState([])
+  const [youtubeKey, setYoutubeKey] = useState([])
   const [yearValue, setYearValue] = useState([])
+  const [castData, setCastData] = useState([])
   const cardSlider = useRef(null)
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-
-  //TODO:- CALLING THE API WITH THE PERTICULAR MOVIE OR SHOW ID FOR GETTING MORE INFOMATION
+  //TODO:- CALLING THE API WITH THE PERTICULAR MOVIE OR SHOW'S ID FOR GETTING MORE INFOMATION
   useEffect(() => {
+
 
     axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
       .then((res) => {
@@ -54,55 +73,72 @@ const Details = () => {
       })
       .catch((err) => console.log(err));
 
-
+    //* HERE WE ARE GETTING THE CAST DETAILS OF THE SELECTED MOVIE
     axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
       .then((res) => {
         setCastData(res.data.cast)
       })
       .catch((err) => console.log(err));
 
-  }, [])
+
+
+    //* GETTING YOU TUBE KEY FROM MOVIE DB API 
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
+      .then((res) => setYoutubeKey(res.data.results))
+      .catch((err) => console.log(err));
+
+
+    // https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=<<api_key>>&language=en-US&page=1
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
+      .then((res) => setMovieRecommendation(res.data.results))
+      .catch((err) => console.log(err));
+
+
+    //* GETTING THE REVIEW OF THE MOVIE
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US&page=1`)
+      .then((res) => setMovieReview(res.data.results))
+      .catch((err) => console.log(err));
+
+  }, [id])
+
+
+
+  // movieReview
+  console.log('movieReview:', movieReview)
+
+
+  //TODO:- GET THE TRAILER OF THE SELECTED VIDEO
+
+  const getMovietrailer = () => {
+    onOpen()
+  }
 
 
   //TODO:- SCROLLING THE CAST SLIDER;
 
   const getSliderValue = (val) => {
-
-
-    let width = (val / 100) * (Math.abs(cardSlider.current?.clientWidth - 9405)) // Multiply the with of the card number with their total qauntity
-
+    let width = (val / 100) * (Math.abs(cardSlider.current?.clientWidth - (castData.length * 150) + (castData.length * 25)))
+    // Multiply the with of the card number with their total qauntity
     cardSlider.current.scrollLeft = width;
-
-    console.log('width:', width)
-
-
-
   }
 
 
-
-  // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
-
-  console.log(selectedMovieData, "selectedMovieData")
-  console.log(castData, "castData")
+  console.log(selectedMovieData, "selected movie data")
+  // setMovieRecommendation
+  console.log('movieRecommendation:', movieRecommendation)
 
   //TODO:- GETTING THE GENRE 
   return (
     <>
       <Container
-        // border='2px solid green'
         maxWidth="100%"
         p="0"
       >
-        <Navbar/>
+        <Navbar />
         <Box
           position="relative"
           w="100%"
-          // border='1px solid blue'
           height={["200px", "270px", "400px", "600px"]}
-          // backgroundImage={`url(https://image.tmdb.org/t/p/original/${selectedMovieData.backdrop_path})`}
-          // bgRepeat="no-repeat"
-          // bgSize="cover"
           display="flex"
           alignItems="center"
           color="rgb(234,234,234)"
@@ -113,18 +149,14 @@ const Details = () => {
             bgSize="cover"
           ></Box>
           <Box
-            // border="6px solid blue"
             px={["0", "5", "10", "12"]}
             display="flex"
             justifyContent='space-between'
             alignItems='center'
-
-
           >
 
             {/* First Child  */}
             <Box
-              // border='2px solid green'
               w='28%'
               h="100%"
               bg='black'
@@ -155,7 +187,7 @@ const Details = () => {
                 </Heading>
                 <Text color=" rgb(247, 210, 210)" fontSize={["10px", "12px", "14px", "16px"]}>{`${selectedMovieData.release_date} / ${arrayOfGenre.join(",")} / ${selectedMovieData.runtime}m  `}</Text>
               </Box>
-              <Box display='flex' justifyContent="space-between" alignItems="center"  width={["100%", "90%", "85%", "80%"]}>
+              <Box display='flex' justifyContent="space-between" alignItems="center" width={["100%", "90%", "85%", "80%"]}>
                 <Box
                   borderRadius='50%'
                   bgColor="rgb(45,45,45)"
@@ -203,7 +235,7 @@ const Details = () => {
                 <Button
                   border='none'
                   bg='transparent'
-
+                  onClick={getMovietrailer}
                   _hover={{ fontWeight: 'semibold', color: 'gray' }}
                 ><BsPlayFill />Play Trailer</Button>
               </Box>
@@ -211,37 +243,35 @@ const Details = () => {
                 _hover={{ color: "gray" }}
               >{selectedMovieData.tagline}</Text>
               <Box>
-                <Text fontSize={["14px", "16px", "18px", "22px"]} fontWeight="600"  display={["none","none","block","block"]}>Overview</Text>
+                <Text fontSize={["14px", "16px", "18px", "22px"]} fontWeight="600" display={["none", "none", "block", "block"]}>Overview</Text>
 
 
                 <Popover placement='top-start' >
                   <PopoverTrigger>
-                    <Button 
-                    
-                    display={["block","block","none","none"]} 
-                    h={["20px","30px","25px"]} 
-                    fontSize={["10px", "12px", "14px", "16px"]} 
-                    bg="rgb(45,45,45)">
-                    
-                    Overview
-                    
+                    <Button
+
+                      display={["block", "block", "none", "none"]}
+                      h={["20px", "30px", "25px"]}
+                      fontSize={["10px", "12px", "14px", "16px"]}
+                      bg="rgb(45,45,45)">
+
+                      Overview
+
                     </Button>
 
                   </PopoverTrigger>
-                  <PopoverContent>
-                    <PopoverHeader fontWeight='semibold'>Popover placement</PopoverHeader>
+                  <PopoverContent bg="rgb(45,45,45)" p="5px">
                     <PopoverArrow />
-                    <PopoverCloseButton />
-                    <PopoverBody>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore.
+                    <PopoverCloseButton bg="black" />
+                    <PopoverBody >
+                      {selectedMovieData.overview}
                     </PopoverBody>
                   </PopoverContent>
                 </Popover>
 
 
 
-                <Text color=" rgb(247, 210, 210);" fontSize={["10px", "12px", "14px", "16px"]} display={["none","none","block","block"]} >{selectedMovieData.overview}</Text>
+                <Text color=" rgb(247, 210, 210);" fontSize={["10px", "12px", "14px", "16px"]} display={["none", "none", "block", "block"]} >{selectedMovieData.overview}</Text>
               </Box>
             </Box>
           </Box>
@@ -286,7 +316,49 @@ const Details = () => {
 
         </Box>
 
-        <Footer/>
+        {/* Review section  */}
+        <Box position='relative'>
+        <Reviews reviewData={movieReview}/>
+        </Box>
+
+
+        {/* Movie recommendations slider  */}
+        <Box >
+          <Box
+            px={["0", "5", "10", "12"]}
+            color={'rgb(234,234,234)'}
+            display="flex" alignItems="center" justifyContent="left" h="100px">
+            <Heading>Recommendations</Heading>
+          </Box>
+          <Box>
+            {
+              <CommonSlider popularMovieData={movieRecommendation} />
+            }
+          </Box>
+
+        </Box>
+
+        <Modal isOpen={isOpen} onClose={onClose} size="el">
+          <ModalOverlay />
+          <ModalContent bg="black">
+            <ModalHeader>{selectedMovieData.title}</ModalHeader>
+            <ModalCloseButton zIndex="100" color={'white'} />
+            <ModalBody display={"flex"} justifyContent="center">
+              <iframe width="965" height="450" src={`https://www.youtube.com/embed/${youtubeKey[0]?.key}?autoplay=1&mute=1`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; 
+                        autoplay=true;
+                         picture-in-picture"
+                allowfullscreen="true" >
+              </iframe>
+            </ModalBody>
+            <ModalFooter>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+
+        <Footer />
       </Container>
     </>
   )
