@@ -127,30 +127,6 @@ function Login_Signup_Modal() {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //TODO:- HERE WE ARE CREATING A FUNCTION WHO WILL GET THE VALUE FROM INPUT BOXES AND MAKE REQUEST TO THE FIREBASE SERSER
   const getValue = () => {
 

@@ -7,13 +7,13 @@ export const GenreUniversal = createContext()
 const GenreData = ({children}) => {
     const [genreData, setGenreData] = useState([]);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
-    //         .then((res) => setGenreData(res.data.genres,))
-    //         .catch((err) => console.log(err))
+        axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US`)
+            .then((res) => setGenreData(res.data.genres,))
+            .catch((err) => console.log(err))
 
-    // }, [])
+    }, [])
 
     console.log(genreData,"im genre data")
 
