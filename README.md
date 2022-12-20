@@ -19,6 +19,8 @@
         <a href="https://junction-plus-abhishekojha5972.vercel.app/">Junction Plus</a>
     </li>
 </ul>
+
+## Pages and their features
 <ol>
     <li>Navbar
         <ul>
