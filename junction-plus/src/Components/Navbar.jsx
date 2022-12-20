@@ -259,7 +259,7 @@ const Navbar = () => {
                     </Center>
                 </Heading>
 
-                <Box  w="100%" m="auto" height={'100vh'} overflowY="scroll" >
+                <Box  w="60%" m="auto" height={'100vh'} overflowY="scroll" >
                     {
                         searchedMovieData.map((ele) => {
                             return <SearchCard key={ele.id} 

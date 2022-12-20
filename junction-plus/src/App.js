@@ -6,6 +6,9 @@ import GetTrailers from "./Components/Youtube_Trailers/GetTrailers";
 import Footer from "./Components/Footer";
 import Details from "./Pages/Details";
 import Reviews from "./Components/Reviews";
+import "./App.css"
+
+
 
 
 function App() {

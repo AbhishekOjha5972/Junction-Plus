@@ -30,7 +30,7 @@ const SearchCard = ({ title, release, rating, poster, language, genre, id, overV
                     <CardBody>
                         <Heading size='md'>{title}</Heading>
 
-                        <Text py='2'>
+                        <Text py='2' noOfLines={4} letterSpacing="1px" lineHeight="26px">
                             {overView}
                         </Text>
                         <Text>
