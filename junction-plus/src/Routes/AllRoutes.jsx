@@ -9,7 +9,6 @@ const AllRoutes = () => {
     <Route path="/" element={<Home/>}/>
     <Route path="/account"   element={<Account/>}/>
     <Route path="/details/:id" element={<Details/>}/>
-
     </Routes>
   )
 }

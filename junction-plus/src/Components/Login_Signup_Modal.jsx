@@ -297,7 +297,7 @@ function Login_Signup_Modal() {
                       padding="20px 10px"
                       onChange={(e) => setLoginTagsValue((prev) => ({ ...prev, password: e.target.value }))}
                     />
-                    <InputRightElement width='4.5rem'>
+                    <InputRightElement width='4.5rem' bg="rgb(45,45,45)">
                       <Button h='1.75rem' size='el' onClick={handleClick}
                         _hover={{
                           color: "teal.500",
@@ -384,7 +384,7 @@ function Login_Signup_Modal() {
               <Center>
                 <VStack>
 
-                  <Box display="flex" justifyContent="center" alignItems="center" border="1px solid red" >
+                  <Box display="flex" justifyContent="center" alignItems="center" >
                     <Image src='https://i.ibb.co/9Y8L45w/logo-5.png' width="50%" />
                   </Box>
 
