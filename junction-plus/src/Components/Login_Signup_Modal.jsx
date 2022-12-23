@@ -69,7 +69,6 @@ function Login_Signup_Modal() {
       setNameInput("Please enter your full name 'ex- Abhishek Ojha' ")
       setEmailInput("Please enter your email 'ex- abhishekojhe@gmail.com")
       setPasswordInput("Please enter your password 'ex- Abhishek6543@'")
-      console.log("1")
       setLoading(false)
       return;
     }
@@ -77,14 +76,12 @@ function Login_Signup_Modal() {
     else if (loginTagsValue.email == "" && loginTagsValue.password !== "") {
       setEmailInput("Please Enter Your Email 🙏")
       setPasswordInput("")
-      console.log("3")
       setLoading(false)
       return;
     }
     else if (loginTagsValue.email !== "" && loginTagsValue.password == "") {
       setPasswordInput("Please Enter Your Password 🙏'")
       setEmailInput("")
-      console.log("4")
       setLoading(false)
       return;
     }
@@ -92,10 +89,8 @@ function Login_Signup_Modal() {
     //TODO:- THIS THE TYPE BASES ON VALIDATION 
 
     else if (!text.includes("@", "gmail", ".", "com", "in")) {
-      console.log(typeof (tagsValue.email))
       setEmailInput("Please Write Current Email Address ex-'tony@gmail.com' 🙏")
       setPasswordInput("")
-      console.log("8")
       setLoading(false)
 
       return;
@@ -103,13 +98,11 @@ function Login_Signup_Modal() {
 
     //TODO:- THIS IS THE FINAL CONDITION IN WHICH WE ARE SENDING THE USER DATA TO FIREBAE
     else if (loginTagsValue.email !== "" && loginTagsValue.password !== "" && text.includes("@", "gmail", ".", "com", "in")) {
-      console.log("hoorray!")
       setPasswordInput("")
       setEmailInput("")
 
       signInWithEmailAndPassword(auth, loginTagsValue.email, loginTagsValue.password)
         .then((res) => {
-          console.log(res)
           UserLogin(res.user)
           setLoading(false)
           onClose()
@@ -142,7 +135,6 @@ function Login_Signup_Modal() {
       setNameInput("Please enter your full name 'ex- Abhishek Ojha' ")
       setEmailInput("Please enter your email 'ex- abhishekojhe@gmail.com")
       setPasswordInput("Please enter your password 'ex- Abhishek6543@'")
-      console.log("1")
       setLoading(false)
       return;
     }
@@ -150,7 +142,6 @@ function Login_Signup_Modal() {
       setNameInput("Please Enter Your Full Name 🙏")
       setPasswordInput("")
       setEmailInput("")
-      console.log("2")
       setLoading(false)
 
       return;
@@ -160,7 +151,6 @@ function Login_Signup_Modal() {
       setEmailInput("Please Enter Your Email 🙏")
       setNameInput("")
       setPasswordInput("")
-      console.log("3")
       setLoading(false)
 
 
@@ -170,7 +160,6 @@ function Login_Signup_Modal() {
       setPasswordInput("Please Enter Your Password 🙏'")
       setNameInput("")
       setEmailInput("")
-      console.log("4")
       setLoading(false)
 
       return;
@@ -179,7 +168,6 @@ function Login_Signup_Modal() {
       setNameInput("Please Enter Your Full Name 🙏")
       setEmailInput("Please Enter Your Email 🙏")
       setPasswordInput("")
-      console.log("5")
       setLoading(false)
 
       return;
@@ -188,7 +176,6 @@ function Login_Signup_Modal() {
       setNameInput("Please Enter Your Full Name 🙏")
       setPasswordInput("Please Enter Your Password 🙏'")
       setEmailInput("")
-      console.log("6")
       setLoading(false)
 
       return;
@@ -198,7 +185,6 @@ function Login_Signup_Modal() {
       setEmailInput("Please Enter Your Email 🙏")
       setPasswordInput("Please Enter Your Password 🙏'")
       setNameInput("")
-      console.log("7")
       setLoading(false)
       return;
     }
@@ -207,11 +193,9 @@ function Login_Signup_Modal() {
     //TODO:- THIS THE TYPE BASES ON VALIDATION 
 
     else if (!text.includes("@", "gmail", ".", "com", "in")) {
-      console.log(typeof (tagsValue.email))
       setEmailInput("Please Write Current Email Address ex-'tony@gmail.com' 🙏")
       setNameInput("")
       setPasswordInput("")
-      console.log("8")
       setLoading(false)
 
       return;
@@ -219,20 +203,16 @@ function Login_Signup_Modal() {
 
     //TODO:- THIS IS THE FINAL CONDITION IN WHICH WE ARE SENDING THE USER DATA TO FIREBAE
     else if (tagsValue.name !== "" && tagsValue.email !== "" && tagsValue.password !== "" && text.includes("@", "gmail", ".", "com", "in")) {
-      console.log("hoorray!")
       setPasswordInput("")
       setEmailInput("")
       setNameInput("")
 
       createUserWithEmailAndPassword(auth, tagsValue.email, tagsValue.password)
         .then((res) => {
-          console.log(res)
           let user = res.user;
           updateProfile(user, {
             displayName: tagsValue.name
           })
-          console.log(res.user, "this is the res.user")
-          console.log(res, "this is the user only")
           UserLogin(res.user)
           setLoading(false)
           onClose()
@@ -247,7 +227,6 @@ function Login_Signup_Modal() {
     }
 
   }
-  console.log(modalChange)
   return modalChange ? (
     <>
 

@@ -11,7 +11,6 @@ import ReviewCard from './ReviewCard'
 
 const Reviews = ({reviewData}) => {
     
-    console.log('reviewData:', reviewData)
     
     return (
         <Box

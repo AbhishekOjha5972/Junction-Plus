@@ -54,7 +54,6 @@ const Navbar = () => {
     const [loading, setLoading] = useState(false)
 
 
-    console.log(Nav_State.login_logout_toggle_state, 'this is the nav state')
     //? NAVBAR FUNCTIONS
 
     const Login_Toggle = () => {
@@ -78,7 +77,6 @@ const Navbar = () => {
 
     const getSearchResult = (query) => {
         setLoading(true);
-        console.log(query)
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&query=${query}&page=1`)
             .then((res) => {
                 SetSearchedMovieData(res.data.results)
@@ -86,7 +84,6 @@ const Navbar = () => {
 
             })
             .catch((err) => console.log(err))
-        console.log("hello world")
     }
     let timer;
     const debounce = (func, delay) => {
@@ -104,13 +101,11 @@ const Navbar = () => {
     }
 
     const changeStateOfSearchModal = () =>{
-        console.log("hello my dear all friends")
         setSearchBoxToggle(false)
     }
 
 
     //* RETURN AREA
-    console.log(searchedMovieData)
     return (
         <>
 

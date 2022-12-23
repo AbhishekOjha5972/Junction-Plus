@@ -21,7 +21,6 @@ const CommonSliderCards = ({ image, genre, id, adult, title, release_date, vote_
   // adult={ele.adult}
   // title={ele.title}
   // release_date={ele.release_date}
-  console.log(title, release_date, adult, id, genre, title_name)
   let genreArray = []
   let i = 0;
   genreData.map((gEle, ind) => {
@@ -31,9 +30,8 @@ const CommonSliderCards = ({ image, genre, id, adult, title, release_date, vote_
     }
   })
 
-  console.log(genreArray, "genreArray", "genreData", genreData)
   return (
-    <Link to={`details/${id}`}>
+    <Link to={`/details/${id}`}>
       <div className={styles.sliderCards}>
         <div className={styles.titleImage}>
           <img src={`https://image.tmdb.org/t/p/original/${image}`} />
