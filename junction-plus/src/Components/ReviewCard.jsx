@@ -5,7 +5,6 @@ const ReviewCard = ({userName,content,created_at,updated_at,link,avatar_path,nam
 {
     let firstLetter=userName.split("");
     let splittedData=created_at.split("-");
-    console.log('firstLetter:', firstLetter,avatar_path)
     
     return (
         <Box

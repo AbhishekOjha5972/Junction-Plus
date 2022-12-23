@@ -15,7 +15,6 @@ const GenreData = ({children}) => {
 
     }, [])
 
-    console.log(genreData,"im genre data")
 
     return (
         <GenreUniversal.Provider value={{genreData}}>{children}</GenreUniversal.Provider>

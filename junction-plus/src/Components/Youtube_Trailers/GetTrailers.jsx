@@ -42,20 +42,17 @@ const GetTrailers = () => {
     const [videoStateId, setVideoId] = useState()
 
     const clickNext = (val) => {
-        console.log('val:', val)
 
         let width = (val / 100) * (Math.abs(thumbnails.current?.clientWidth - 6300)) // Multiply the with of the card number with their total qauntity
 
         thumbnails.current.scrollLeft = width;
 
-        console.log('width:', width)
     }
 
     useEffect(() => {
         axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=hollywood movie trailer&key=AIzaSyAJ_l-qloiu0uwUZqtNkRS3PBx3LZAnDeA`)
             .then((res) => {
                 setYtData(res.data.items)
-                console.log(res)
             })
             .catch((err) => console.log(err));
     }, [])
@@ -70,7 +67,6 @@ const GetTrailers = () => {
         axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&key=AIzaSyAJ_l-qloiu0uwUZqtNkRS3PBx3LZAnDeA`)
             .then((res) => {
                 setYtData(res.data.items)
-                console.log(res)
             })
             .catch((err) => console.log(err));
     }
@@ -82,8 +78,6 @@ const GetTrailers = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const OpenYtModal = (val) => {
-        console.log("hello Abhishek")
-        console.log(val, "videoId")
         setVideoId(val)
         onOpen()
     }

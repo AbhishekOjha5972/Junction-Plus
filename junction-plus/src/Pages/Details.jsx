@@ -104,7 +104,6 @@ const Details = () => {
 
 
   // movieReview
-  console.log('movieReview:', movieReview)
 
 
   //TODO:- GET THE TRAILER OF THE SELECTED VIDEO
@@ -123,9 +122,6 @@ const Details = () => {
   }
 
 
-  console.log(selectedMovieData, "selected movie data")
-  // setMovieRecommendation
-  console.log('movieRecommendation:', movieRecommendation)
 
   //TODO:- GETTING THE GENRE 
   return (

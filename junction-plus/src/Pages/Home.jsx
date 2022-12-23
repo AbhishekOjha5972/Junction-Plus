@@ -22,7 +22,6 @@ const Home = () => {
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US&page=1`)
       .then((res) => {
-        console.log(res)
         setPupularMovieData(res.data.results)
       })
       .catch((err) => console.log(err));
@@ -31,9 +30,7 @@ const Home = () => {
 
       axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US&page=1`)
       .then((res) => {
-          console.log(res.data.results,"this is the current calling function")
           setTvShowsData(res.data.results)
-          console.log("hellow ")
         })
         .catch((err) => console.log(err))
 
@@ -54,13 +51,9 @@ const Home = () => {
     else if(val=="Top Rated"){
       query="top_rated"
     } 
-    console.log(val,query)
-    // https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
     axios.get(`https://api.themoviedb.org/3/movie/${query}?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US&page=1`)
     .then((res) => {
-        console.log(res.data.results,"this is the current calling function")
         setPupularMovieData(res.data.results)
-        console.log("hellow ")
       })
       .catch((err) => console.log(err))
 
@@ -86,7 +79,6 @@ const Home = () => {
     // https://api.themoviedb.org/3/tv/popular?api_key=<<api_key>>&language=en-US&page=1
     axios.get(`https://api.themoviedb.org/3/tv/${query}?api_key=26b4b6b67e3c0341ce0cf1dc7ce746d9&language=en-US&page=1`)
     .then((res) => {
-        console.log(res.data.results,"this is the current calling function")
         setTvShowsData(res.data.results)
       })
       .catch((err) => console.log(err))

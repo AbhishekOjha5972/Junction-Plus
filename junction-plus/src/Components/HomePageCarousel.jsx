@@ -46,7 +46,6 @@ export default function HomePageCarousel() {
   // This list contains all the data for carousels
   // This can be static or loaded from a server
 
-  console.log('apiData:', apiData)
 
 
 
@@ -60,9 +59,7 @@ export default function HomePageCarousel() {
   }, []);
 
 
-  console.log("api data in the home page carousel", apiData)
 
-  console.log('apiData:', apiData)
   return (
     <Box
       position={'relative'}
