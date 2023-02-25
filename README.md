@@ -35,6 +35,10 @@
                     <li>Form is fully validated</li>
               </ul>
         </ul></li>
+        
+   
+
+
   <li>Home
       <ul>
             <li>Popular Movie Carousel
@@ -70,3 +74,29 @@
             <li>Trailers of the selected movie</li>
         </ul></li>
 </ol>
+<h2>Home</h2>
+ <img src="https://user-images.githubusercontent.com/108677306/221346026-b1050e5a-dbb2-46d7-97b7-e63c24babc00.PNG"/>
+ 
+ <h2>In theatre section</h2>
+<img src="https://user-images.githubusercontent.com/108677306/221346490-7e621701-df43-4ee9-9050-9a9c8de75867.PNG"/>
+
+<h2>Custom carousel</h2>
+<img src="https://user-images.githubusercontent.com/108677306/221346785-5fef4f23-44f1-4f1d-9672-fec1d5786dad.PNG"/>
+
+<h2>Details Page</h2>
+<img src="https://user-images.githubusercontent.com/108677306/221346852-e7bb1e19-33b5-401d-b98e-7d4991014c18.PNG"/>
+
+
+<h2>Movie cast</h2>
+<img src="https://user-images.githubusercontent.com/108677306/221346943-8feb9f88-034f-4ec8-aa98-b74a0604963e.PNG"/>
+
+
+
+
+
+
+
+
+
+
+
